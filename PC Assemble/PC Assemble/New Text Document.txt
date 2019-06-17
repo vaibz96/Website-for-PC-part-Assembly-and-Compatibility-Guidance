@@ -1,0 +1,30 @@
+<html>
+<?php
+	require 'config.php';
+  function runMyFunction() {
+  $sql77 = ("SELECT * FROM comp WHERE comp_id =1 AND mobosocket
+= (SELECT cpusocket FROM comp WHERE comp_id =1)");
+$query77 = mysqli_query($db,$sql77) or die ("Error: " . mysqli_error($db));
+$check77 = mysqli_fetch_array($query77);
+
+if($check77==true)
+{
+echo '<script language="javascript">';
+echo 'alert("Parts are Compatible")';
+echo '</script>';
+}
+else
+{
+echo '<script language="javascript">';
+echo 'alert("Parts are in compatible")';
+echo '</script>';
+}
+  }
+
+  if (isset($_GET['hello'])) {
+    runMyFunction();
+  }
+?>
+
+<a href='cart77.php?hello=true'>Check Compatibility</a>
+</html>
